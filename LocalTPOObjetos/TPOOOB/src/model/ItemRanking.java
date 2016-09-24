@@ -6,7 +6,11 @@ public class ItemRanking {
 	private Nivel nivelDondeQuedo;
 	private int puntaje;
 
-	/*falta el constructor, o no va?*/
+	public ItemRanking(Usuario usuario,Nivel nivelDondeQuedo,int puntaje){
+		this.usuario=usuario;
+		this.nivelDondeQuedo=nivelDondeQuedo;
+		this.puntaje=puntaje;	
+	}
 	
 	public Usuario getUsuario() {
 		return usuario;

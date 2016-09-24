@@ -2,11 +2,18 @@ package model;
 
 import java.util.Collection;
 
-public class Nivel {
-
-	private Collection<Pieza> piezas;
-	private String nombre;
-	private int cantPiezas;
+public abstract class Nivel {
+	
+	protected Collection<Pieza> piezas;
+	protected String nombre;
+	protected int cantPiezas;
+	
+	public Nivel(Collection<Pieza> piezas,String nombre,int cantPiezas){
+		super();
+		this.piezas= piezas;
+		this.nombre=nombre;
+		this.cantPiezas= cantPiezas;
+	}
 
 	public Collection<Pieza> getPiezas() {
 		return piezas;
@@ -31,5 +38,7 @@ public class Nivel {
 	public void setCantPiezas(int cantPiezas) {
 		this.cantPiezas = cantPiezas;
 	}
+	
+	public abstract boolean validarNivel(String nombrePieza);
 
 }
