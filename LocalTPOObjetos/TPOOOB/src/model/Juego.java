@@ -5,11 +5,16 @@ import java.util.Iterator;
 
 public abstract class Juego {
 
-	private Collection<ItemRanking> ranking;
-	private String nombre;
-	private Collection<Nivel> niveles;
+	protected Collection<ItemRanking> ranking;
+	protected String nombre;
+	protected Collection<Nivel> niveles;
 
-	public abstract void setNiveles();
+	public Juego(Collection<ItemRanking> ranking,String nombre,Collection<Nivel> niveles){
+		super();
+		this.ranking=ranking;
+		this.nombre=nombre;
+		this.niveles= niveles;
+	}
 
 	public Collection<Nivel> getNiveles() {
 		return this.niveles;
@@ -30,23 +35,19 @@ public abstract class Juego {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	
 	public Collection<Pieza> getPiezasNivelDelUsuario(Usuario usuarioActual){
-		ItemRanking itRanking =buscarItemRankingUsuarioActual(usuarioActual);
-	    
+		ItemRanking itRanking =buscarItemRankingUsuarioActual(usuarioActual);    
 		return itRanking.getNivelDondeQuedo().getPiezas();
-			  // itRanking.getNivelDondeQuedo().getPiezas();
-	}
-	public int getCantPiezasNivelDelUsuario(Usuario usuarioActual){
-        ItemRanking itRanking =buscarItemRankingUsuarioActual(usuarioActual);
-	    
-		return itRanking.getNivelDondeQuedo().getCantPiezas();
-		
 	}
 	
+	public int getCantPiezasNivelDelUsuario(Usuario usuarioActual){
+        ItemRanking itRanking =buscarItemRankingUsuarioActual(usuarioActual);
+		return itRanking.getNivelDondeQuedo().getCantPiezas();
+	}
 	
 	/*con esto obtengo el itemRanking del usuarioActual*/
 	private ItemRanking buscarItemRankingUsuarioActual(Usuario usuarioActual){
-		
 		ItemRanking result= null;	
 	    Iterator<ItemRanking> itRanking = ranking.iterator();
 			while (result == null && itRanking.hasNext()) {
@@ -57,4 +58,13 @@ public abstract class Juego {
 			}
 			return result;
 	}
+	/*este no se si va en el diagrama pq es protected*/
+	protected Nivel getNivelActual(Usuario usuarioActual){
+		ItemRanking itemRank = buscarItemRankingUsuarioActual(usuarioActual);
+		Nivel nivelActual=itemRank.getNivelDondeQuedo();
+		return nivelActual;
+	}
+	
+	public abstract boolean validarNivel(Usuario usuarioActual);
+
 }
