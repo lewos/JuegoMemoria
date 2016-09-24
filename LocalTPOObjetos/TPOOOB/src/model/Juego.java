@@ -10,7 +10,6 @@ public abstract class Juego {
 	protected Collection<Nivel> niveles;
 
 	public Juego(Collection<ItemRanking> ranking,String nombre,Collection<Nivel> niveles){
-		super();
 		this.ranking=ranking;
 		this.nombre=nombre;
 		this.niveles= niveles;

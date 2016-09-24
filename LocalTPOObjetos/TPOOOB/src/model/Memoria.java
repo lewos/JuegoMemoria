@@ -10,8 +10,9 @@ public class Memoria extends Juego {
 	
 	public boolean validarPar(String nomPiezaSel1,String nomPiezaSel2,Usuario usuarioActual){
 		// esto de hacer un cast no se si se adapta al mvc
-		NivelMemoria nivelActual=(NivelMemoria) getNivelActual(usuarioActual);
-		return nivelActual.validarParPiezas(nomPiezaSel1, nomPiezaSel2);
+		Nivel nivelActual=(NivelMemoria) getNivelActual(usuarioActual);
+		//return nivelActual.validarParPiezas(nomPiezaSel1, nomPiezaSel2);
+		return false;
 	}
 	/**Ve el nivelActual del UsuarioActual y pregunta a Nivel que valide
 	 * @UsuarioActual

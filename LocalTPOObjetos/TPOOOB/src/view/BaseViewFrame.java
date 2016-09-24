@@ -1,5 +1,7 @@
 package view;
 
+import java.awt.Component;
+
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
@@ -17,5 +19,13 @@ public abstract class BaseViewFrame extends JFrame {
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		this.setTitle("Juegos TPO");
 		this.setLayout(null);
+	}
+
+	@Override
+	public Component add(Component comp) {
+		Component c = super.add(comp);
+		this.validate();
+		this.repaint();
+		return c;
 	}
 }

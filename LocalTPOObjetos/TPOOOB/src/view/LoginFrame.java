@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import exception.ValidationException;
 
 import controller.Controlador;
 
@@ -46,14 +45,11 @@ public class LoginFrame extends BaseViewFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if (loginFrame.usuarioField.getText() != null && !loginFrame.usuarioField.getText().isEmpty()) {
-				try {
-					controller.altaUsuario(loginFrame.usuarioField.getText());
-					// Login exitoso, redirigir al menu ppal
-					
-				} catch (ValidationException e1) {
-					// TODO: Debemos mostrar un mensaje de error en la pantalla
-					// con el mensaje de le ex
-					e1.printStackTrace();
+				boolean loginOk = controller.validarUsuario(loginFrame.usuarioField.getText());
+				if (!loginOk) {
+					JLabel usuarioNoExisteLabel = new JLabel("El usuario no existe!");
+					usuarioNoExisteLabel.setBounds(20, 100, 200, 20);
+					loginFrame.add(usuarioNoExisteLabel);
 				}
 			}
 
