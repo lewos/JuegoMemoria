@@ -1,13 +1,13 @@
 package model;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Usuario {
 	
 	private String nombre;
 	private Date fechaNac;
 	
-	public Usuario(String nombre) {
+	public Usuario(String nombre, Date fechaNac) {
 		this.nombre = nombre;
 	}
 	

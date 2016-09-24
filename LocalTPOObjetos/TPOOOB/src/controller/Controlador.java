@@ -1,8 +1,9 @@
 package controller;
 
-import java.sql.Date;
+
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -28,9 +29,9 @@ public class Controlador {
 		this.juegos.add(new Memoria(null, null, null));
 	}
 
-	public void altaUsuario(String nombre) throws ValidationException {
+	public void altaUsuario(String nombre, Date fechaNac) throws ValidationException {
 		if (buscarUsuario(nombre) == null) {
-			this.usuarios.add(new Usuario(nombre));
+			this.usuarios.add(new Usuario(nombre, fechaNac));
 		} else {
 			throw new ValidationException("El usuario ya existe!");
 		}

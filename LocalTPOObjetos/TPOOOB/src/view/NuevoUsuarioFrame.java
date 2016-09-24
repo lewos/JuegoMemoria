@@ -2,6 +2,7 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -68,8 +69,9 @@ public class NuevoUsuarioFrame extends BaseViewFrame {
 		public void actionPerformed(ActionEvent e) {
 			if (nuevoUsuarioFrame.usuarioField.getText() != null
 					&& !nuevoUsuarioFrame.usuarioField.getText().isEmpty()) {
+				
 				try {
-					controller.altaUsuario(nuevoUsuarioFrame.usuarioField.getText());
+					controller.altaUsuario(nuevoUsuarioFrame.usuarioField.getText(), new Date());
 					volver();
 				} catch (ValidationException ve) {
 					JLabel usuarioYaExiste = new JLabel(ve.getMessage());
